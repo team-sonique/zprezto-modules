@@ -3,7 +3,8 @@
     local battenberg_version=$2
     
     if [ -e ${battenberg_version} ]; then
-        battenberg_version=$(curl -s "${_ARTIFACTORY}/api/search/latestVersion?g=charts&a=battenberg-chart&v=*.*&repos=libs-releases-local")
+        local latest=`_get_latest_version battenberg dev`
+        battenberg_version=${latest%-*}
     fi
     echo "Running Battenberg ${job_name} Job version $battenberg_version"
     ip_addr=$(ipconfig getifaddr en0)
