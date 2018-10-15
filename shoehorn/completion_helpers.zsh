@@ -46,22 +46,23 @@ function _complete_aggregates {
 }
 
 function _complete_versions_with_latest {
-    local selected_app="$1"
+    local selected_app="$1" app_description
     local -a versions
 
+    IFS=":" read app_description other <<< ${APPLICATIONS[$selected_app]}
     local latest_dev_version="$(_get_latest_version ${selected_app})"
 
     versions=(
-        "${latest_dev_version}:The latest dev version of ${selected_app} (default)"
+        "${latest_dev_version}:The latest dev version of ${app_description} (default)"
     )
 
     local latest_signed_off_version="$(_get_latest_version ${selected_app} 'prod')"
 
     if [ ! -z ${latest_signed_off_version} ]; then
-        versions+="${latest_signed_off_version}:The signed-off version of ${selected_app}"
+        versions+="${latest_signed_off_version}:The signed-off version of ${app_description}"
     fi
 
-    versions+="DEV-SNAPSHOT:The DEV-SNAPSHOT version of ${selected_app}"
+    versions+="DEV-SNAPSHOT:The DEV-SNAPSHOT version of ${app_description}"
 
     _describe -t versions 'shoehorn latest versions' versions
 }
