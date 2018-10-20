@@ -1,7 +1,7 @@
 function _list_local_apps {
     local -a app_dirs
 
-    app_dirs=("${(@f)$(find /data/apps -depth 2 | sed 's/\/data\/apps\///g')}")
+    app_dirs=("${(@f)$(find /data/apps -depth 3 -name status.sh | sed 's/\/data\/apps\/\(.*\)\/status.sh/\1/')}")
 
     local -A apps
 
