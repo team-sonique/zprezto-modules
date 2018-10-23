@@ -6,7 +6,7 @@
 
     if [[ $? -eq 1 ]]; then
         echo 'Creating local Docker database for Mobile apps'
-        docker run --name ${app_name} -d -p 1521:1521 -p 5500:5500 --shm-size=4g --restart=unless-stopped --net=sonique-network --net-alias=${app_name} repo.sns.sky.com:8085/dost/${app_name}:${app_version} > /dev/null
+        docker run --name ${app_name} -d -p 1521:1521 -p 5500:5500 --shm-size=4g --restart=unless-stopped --net=sonique-network --net-alias=${app_name} repo.sns.sky.com:8085/dost/${app_name}:${app_version}
     else
         if [[ $output == 'running' ]]; then
             #do nothing
