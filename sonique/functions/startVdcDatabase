@@ -1,6 +1,6 @@
 #function startVdcDatabase {
     local app_name='oracle-12c-vdc'
-    local app_version='1.65'
+    local app_version='1.73'
 
     output=$(docker inspect --format='{{ .State.Status }}' $app_name 2> /dev/null)
 
