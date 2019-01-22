@@ -36,7 +36,7 @@
         fi
 
         local isInDockerRepo
-        echo "checking docker repo..."
+        echo "checking docker repo for ${app}..."
         isInDockerRepo="$(_is_in_docker_repo ${app})"
         if [ $? -eq 0 ]; then
             _run_shoehorn shoehorn.docker.ShoehornDockerWrapper -app ${app} -compositeVersion ${version} -environment ${env}
