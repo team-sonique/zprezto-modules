@@ -1,6 +1,0 @@
-#compdef runBattenbergJob
-
-local -a jobs
-jobs=('loader:Loader' 'enhancer:Enhancer')
-
-_describe job_name jobs
