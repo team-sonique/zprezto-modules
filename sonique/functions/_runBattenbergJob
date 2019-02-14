@@ -1,0 +1,5 @@
+#compdef runBattenbergJob
+
+_complete_versions_with_latest battenberg
+
+return 0
