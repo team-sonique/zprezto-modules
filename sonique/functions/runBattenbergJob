@@ -1,13 +1,9 @@
 #function runBattenbergJob {
-    local battenberg_id=$1
-    local battenberg_version=${battenberg_id#dev-}
+    local battenberg_version=${1#dev-}
     local image_name
 
     if [ -z ${battenberg_version} ]; then
         battenberg_version=`_get_latest_version battenberg dev`
-        battenberg_id="dev-${battenberg_version}"
-    elif [[ "${battenberg_version}" == "${battenberg_id}" ]]; then
-        battenberg_id="dev-${battenberg_version}"
     fi
 
     if [[ 'DEV-SNAPSHOT' == ${battenberg_version} ]]; then
