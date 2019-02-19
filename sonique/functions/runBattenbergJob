@@ -1,20 +1,21 @@
 #function runBattenbergJob {
-    local battenberg_version=$1
+    local battenberg_id=$1
+    local battenberg_version=${battenberg_id#dev-}
     local image_name
 
-    if [ -e ${battenberg_version} ]; then
-        local latest=`_get_latest_version battenberg dev`
-        battenberg_version=${latest%-*}
+    if [ -z ${battenberg_version} ]; then
+        battenberg_version=`_get_latest_version battenberg dev`
+        battenberg_id="dev-${battenberg_version}"
+    elif [[ "${battenberg_version}" == "${battenberg_id}" ]]; then
+        battenberg_id="dev-${battenberg_version}"
     fi
 
     if [[ 'DEV-SNAPSHOT' == ${battenberg_version} ]]; then
       image_name="battenberg-job:DEV-SNAPSHOT"
     else
-      image_name="repo.sns.sky.com:8085/ukiss/battenberg-job:${battenberg_version}"
+      image_name="repo.sns.sky.com:8085/ukiss/battenberg-job:${battenberg_version%-*}"
     fi
 
     echo "Running Battenberg Job version $battenberg_version"
-    ip_addr=$(ipconfig getifaddr en0)
-
     (set -x; docker run --rm --name battenberg-job --net=sonique-network --net-alias=battenberg-job -v /data:/app/data -v /data/apps/battenberg/dev-${battenberg_version}/config:/app/config -e TZ=Europe/London ${image_name})
 #}
