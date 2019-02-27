@@ -1,0 +1,18 @@
+function startK8sApiStub {
+    local app_name='k8s-api-stub'
+
+    output=$(docker inspect --format='{{ .State.Status }}' ${app_name} 2> /dev/null)
+    if [[ $? -eq 1 ]]; then
+        echo "Creating local ${app_name} Instance"
+        local docker_host=$(ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print $2}')
+        docker run -d -p 8050:8080 -p 5701:5701  --net=sonique-network -e DOCKER_HOST=${docker_host} --name ${app_name} repo.sns.sky.com:8185/ukiss/${app_name}:1.2
+    else
+        if [[ $output == 'running' ]]; then
+            #do nothing
+        else
+            echo "Starting local ${app_name} Instance"
+            docker start ${app_name} > /dev/null
+        fi
+    fi
+    echo "${app_name} Instance running at ${docker_host}:8050"
+}
