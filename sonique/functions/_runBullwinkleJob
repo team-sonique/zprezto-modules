@@ -9,7 +9,7 @@ _arguments ':job:->job' ':version:->version'
 
 case ${state} in
     version)
-      _complete_versions_with_deployed_ones data battenberg
+      _complete_versions_with_deployed_ones data bullwinkle
       ;;
     job)
       _describe -t job 'Bullwinkle Jobs' jobs
