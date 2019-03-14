@@ -10,3 +10,5 @@ alias removeKnownHostBuildAgents='sed -i "" "/^ba*/d" ~/.ssh/known_hosts'
 
 alias stopoas='sudo /usr/local/McAfee/AntiMalware/VSControl stopoas'
 alias startoas='sudo /usr/local/McAfee/AntiMalware/VSControl startoas'
+alias resetVpn='sudo killall vpnagentd'
+
