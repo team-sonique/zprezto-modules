@@ -15,5 +15,5 @@
     fi
 
     echo "Running Bullwinkle ${job_name} version $bullwinkle_version"
-    (set -x; docker run --rm --name bullwinkle-${job_name} --net=sonique-network --net-alias=bullwinkle-${job_name} -v /tmp:/app/tuk -v /data/apps/bullwinkle/dev-${bullwinkle_version}/config:/app/config -e TZ=Europe/London ${image_name} )
+    (set -x; docker run --rm --name bullwinkle-${job_name} --net=sonique-network --net-alias=bullwinkle-${job_name} -v /data/tuk:/app/tuk -v /data/apps/bullwinkle/dev-${bullwinkle_version}/config:/app/config -e TZ=Europe/London ${image_name} )
 #}
