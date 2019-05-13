@@ -1,19 +1,39 @@
 #function startVdcDatabase {
     local app_name='oracle-12c-vdc'
-    local app_version='1.82'
+    local app_version='1.87'
+    local image="repo.sns.sky.com:8085/dost/${app_name}:${app_version}"
+
+    function runOracle {
+      echo 'Starting new local Docker database for VDC apps'
+      docker run --name ${app_name} -d -p 1525:1521 -p 5505:5500 --shm-size=2g --restart=unless-stopped --net=sonique-network --net-alias=${app_name} ${image}
+    }
 
     output=$(docker inspect --format='{{ .State.Status }}' $app_name 2> /dev/null)
 
     if [[ $? -eq 1 ]]; then
-        echo 'Creating local Docker database for VDC apps'
-        docker run --name ${app_name} -d -p 1525:1521 -p 5505:5500 --shm-size=2g --restart=unless-stopped --net=sonique-network --net-alias=${app_name} repo.sns.sky.com:8085/dost/${app_name}:${app_version}
+        runOracle
     else
+        running_image=$(docker inspect --format='{{ .Config.Image }}' oracle-12c-vdc 2> /dev/null)
+
         if [[ $output == 'running' ]]; then
-            #do nothing
+            if [[ ${running_image} != ${image} ]]; then
+               echo "Removing outdated ${running_image}"
+               docker kill ${app_name} > /dev/null
+               docker rm ${app_name} > /dev/null
+               runOracle
+            fi
         else
-            echo 'Starting local Docker database for VDC apps'
-            docker start ${app_name} > /dev/null
+            if [[ ${running_image} != ${image} ]]; then
+                echo "Removing outdated ${running_image}"
+                docker rm ${app_name} > /dev/null
+                runOracle
+            else
+                echo 'Starting local Docker database for VDC apps'
+                docker start ${app_name} > /dev/null
+            fi
         fi
     fi
     echo "Docker database for VDC apps running on jdbc:oracle:thin:@//localhost:1525/db1"
+
+    unfunction runOracle
 #}
