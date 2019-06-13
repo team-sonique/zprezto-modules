@@ -1,6 +1,6 @@
 #function startVdcDatabase {
     local app_name='oracle-12c-vdc'
-    local app_version='1.88'
+    local app_version='1.89'
     local image="repo.sns.sky.com:8085/dost/${app_name}:${app_version}"
 
     function runOracle {
