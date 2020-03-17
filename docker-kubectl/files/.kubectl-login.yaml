@@ -1,0 +1,12 @@
+oauth:
+  endpoint:
+    access.token: https://cauth.bmtapps.bskyb.com/token
+    user.info.token: https://cauth.bmtapps.bskyb.com/me
+
+cauth:
+  # default is to prompt
+  username:
+  # default is <working dir>/certs
+  ca.cert.dir:
+
+kube.config.username: oidcuser
