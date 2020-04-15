@@ -1,17 +1,23 @@
 #function gpgEncrypt {
+  if [[ ${#*[@]} != 2 ]]; then
+    echo "$FX[bold]Usage:$FX[no-bold]\n   ${0} <$FX[standout]gpg-key-name$FX[no-standout]> <$FX[standout]filename or string to encrypt$FX[no-standout]>"
+    return 0
+  fi
+
   local gpgKey=$1
-  local inputFile=$2
+  local input=$2
 
-  if [[ -d ${inputFile} ]] ; then
-    echo "'${inputFile}' is a directory."
+  if [[ -d ${input} ]] ; then
+    echo "'${input}' is a directory."
     return -1
-  elif [[ ! -f ${inputFile} ]]; then
-    echo "File '${inputFile}' not found."
-    return -1
+  elif [[ ! -f ${input} ]]; then
+    docker run --rm -e GPG_KEY_NAME=${gpgKey} -e RAW_TEXT=${input} ${ENCRYPTOR_IMAGE}
+
+    echo "$FG[yellow]Encypted input as text for $FG[blue]${gpgKey}."
   else
-    docker run --rm -v `pwd`/${inputFile}:/work/input.txt -e GPG_KEY_NAME=${gpgKey} -e INPUT_FILE=/work/input.txt ${ENCRYPTOR_IMAGE}
+    docker run --rm -v `pwd`/${input}:/work/input.txt -e GPG_KEY_NAME=${gpgKey} -e INPUT_FILE=/work/input.txt ${ENCRYPTOR_IMAGE}
 
-    echo "$FG[yellow]Encypted $FX[bold]${inputFile}$FX[no-bold] for ${gpgKey}."
+    echo "$FG[yellow]Encypted $FX[bold]${input}$FX[no-bold] for $FG[blue]${gpgKey}."
   fi
 
 #} #end function
