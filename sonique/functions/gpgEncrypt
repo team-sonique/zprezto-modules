@@ -1,0 +1,17 @@
+#function gpgEncrypt {
+  local gpgKey=$1
+  local inputFile=$2
+
+  if [[ -d ${inputFile} ]] ; then
+    echo "'${inputFile}' is a directory."
+    return -1
+  elif [[ ! -f ${inputFile} ]]; then
+    echo "File '${inputFile}' not found."
+    return -1
+  else
+    docker run --rm -v `pwd`/${inputFile}:/work/input.txt -e GPG_KEY_NAME=${gpgKey} -e INPUT_FILE=/work/input.txt ${ENCRYPTOR_IMAGE}
+
+    echo "$FG[yellow]Encypted $FX[bold]${inputFile}$FX[no-bold] for ${gpgKey}."
+  fi
+
+#} #end function

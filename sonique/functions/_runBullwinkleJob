@@ -1,19 +1,10 @@
 #compdef runBullwinkleJob
 
-local ret=1 state
 local -a jobs
 jobs=('file-writer:File Writer' 'file-reader:File Reader' 'notifier:Notifier' 'stale-requests:Stale Requests')
 
-_arguments ':job:->job' ':version:->version'
+_arguments \
+  ':job:{_describe -t job "Bullwinkle Jobs" jobs}' \
+  ':version:{_complete_versions_with_deployed_ones data bullwinkle}'
 
-
-case ${state} in
-    version)
-      _complete_versions_with_deployed_ones data bullwinkle
-      ;;
-    job)
-      _describe -t job 'Bullwinkle Jobs' jobs
-   ;;
-esac
-
-return ret
+return 0

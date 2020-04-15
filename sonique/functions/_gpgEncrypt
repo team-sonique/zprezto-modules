@@ -1,0 +1,10 @@
+#compdef gpgEncrypt
+local -a envGpgKeys
+envGpgKeys=('dost-prod:Production' 'dost-stage:Staging' 'dost-test:Test' 'dost-stubs:Stubs' 'dost-utils:Utils')
+
+_arguments \
+  ':env:{_describe "GPG Key name" envGpgKeys}' \
+  ':filename:_files'
+
+return 0
+
