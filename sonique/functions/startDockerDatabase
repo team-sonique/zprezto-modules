@@ -1,12 +1,12 @@
 #function startDockerDatabase {
     local app_name='oracle-11g'
-    local app_version='1.35'
+    local app_version='2.12'
 
     output=$(docker inspect --format='{{ .State.Status }}' $app_name 2> /dev/null)
 
     if [[ $? -eq 1 ]]; then
         echo 'Creating local Docker database for Mobile apps'
-        docker run --name ${app_name} -d -p 1521:1521 -p 5500:5500 --shm-size=4g --restart=unless-stopped --net=sonique-network --net-alias=${app_name} repo.sns.sky.com:8085/dost/${app_name}:${app_version}
+        docker run --name ${app_name} -d -p 1521:1521 -p 5500:5500 --shm-size=4g --restart=unless-stopped --net=sonique-network --net-alias=${app_name} repo.sns.sky.com:8185/dost/${app_name}:${app_version}
     else
         if [[ $output == 'running' ]]; then
             #do nothing
