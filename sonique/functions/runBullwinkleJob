@@ -2,6 +2,7 @@
     local job_name=$1
     local bullwinkle_version=${2#dev-}
     local image_name
+    local docker_registry='eu.gcr.io/skyuk-uk-ukiss-registry-prod'
 
 
     if [ -z ${bullwinkle_version} ]; then
@@ -11,7 +12,7 @@
     if [[ 'DEV-SNAPSHOT' == ${bullwinkle_version} ]]; then
       image_name="bullwinkle-${job_name}:DEV-SNAPSHOT"
     else
-      image_name="repo.sns.sky.com:8085/ukiss/bullwinkle-${job_name}:${bullwinkle_version%-*}"
+      image_name="${docker_registry}/bullwinkle-${job_name}:${bullwinkle_version%-*}"
     fi
 
     echo "Running Bullwinkle ${job_name} version $bullwinkle_version"

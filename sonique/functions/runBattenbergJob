@@ -1,6 +1,7 @@
 #function runBattenbergJob {
     local battenberg_version=${1#dev-}
     local image_name
+    local docker_registry='eu.gcr.io/skyuk-uk-ukiss-registry-prod'
 
     if [ -z ${battenberg_version} ]; then
         battenberg_version=`_get_latest_version battenberg dev`
@@ -9,7 +10,7 @@
     if [[ 'DEV-SNAPSHOT' == ${battenberg_version} ]]; then
       image_name="battenberg-job:DEV-SNAPSHOT"
     else
-      image_name="repo.sns.sky.com:8085/ukiss/battenberg-job:${battenberg_version%-*}"
+      image_name="${docker_registry}/battenberg-job:${battenberg_version%-*}"
     fi
 
     echo "Running Battenberg Job version $battenberg_version"
