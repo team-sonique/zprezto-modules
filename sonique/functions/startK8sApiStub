@@ -1,11 +1,11 @@
 function startK8sApiStub {
     local app_name='k8s-api-stub'
     local docker_registry='eu.gcr.io/skyuk-uk-ukiss-registry-prod'
-    
+
     output=$(docker inspect --format='{{ .State.Status }}' ${app_name} 2> /dev/null)
     if [[ $? -eq 1 ]]; then
         echo "Creating local ${app_name} Instance"
-        local docker_host=$(ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print $2}')
+        local docker_host=$(ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | head -1 | awk '{print $2}')
         docker run -d -p 8050:8080 -p 5701:5701  --net=sonique-network -e DOCKER_HOST=${docker_host} --name ${app_name} ${docker_registry}/${app_name}:5
     else
         if [[ $output == 'running' ]]; then

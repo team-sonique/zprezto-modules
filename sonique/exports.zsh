@@ -6,4 +6,4 @@ export SHOEHORN_BUILD_DIR=/tmp/shoehorn
 export SENCHA_CMD_DIR=~/bin/Sencha/Cmd
 export PATH=.:$PATH:$SENCHA_CMD_DIR
 
-export ENCRYPTOR_IMAGE="repo.sns.sky.com:8186/dost/gpg-string-encryptor:22"
+export ENCRYPTOR_IMAGE="eu.gcr.io/skyuk-uk-ukiss-registry-prod/gpg-string-encryptor:latest"
