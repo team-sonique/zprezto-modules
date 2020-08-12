@@ -1,7 +1,7 @@
 #function startVdcDatabase {
     local app_name='oracle-12c-vdc'
-    local app_version='2.117'
-    local image="repo.sns.sky.com:8186/dost/${app_name}:${app_version}"
+    local app_version='2.151'
+    local image="eu.gcr.io/skyuk-uk-ukiss-registry-prod/${app_name}:${app_version}"
 
     function runOracle {
       echo 'Starting new local Docker database for VDC apps'
