@@ -28,11 +28,12 @@ function _is_in_docker_repo {
     if [[ ${non_docker_overrides[(r)${app}]} == ${app} ]] ; then
         return 1
     else
-        local response=$(curl --write-out %{http_code} --silent --output /dev/null "${_ARTIFACTORY}/docker-local/ukiss/${app}")
-        if [[ ${response} -eq '404' ]]; then
-            return 1
-        else
+        local imageTags=$(docker run --rm -v ~/.gcloud/:/gcloud/:ro  google/cloud-sdk:alpine bash -c "gcloud auth activate-service-account --key-file=/gcloud/GCR_SERVICE_ACCOUNT_KEY.json && gcloud container images list-tags eu.gcr.io/skyuk-uk-ukiss-registry-prod/${app}")
+
+        if [[ -n ${imageTags} ]]; then
             return 0
+        else
+            return 1
         fi
     fi
 }
