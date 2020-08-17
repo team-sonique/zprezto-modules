@@ -1,4 +1,6 @@
 #function gpgEncrypt {
+  local encryptorImage="${DOCKER_REGISTRY}/gpg-string-encryptor:latest"
+
   if [[ ${#*[@]} != 2 ]]; then
     echo "$FX[bold]Usage:$FX[no-bold]\n   ${0} <$FX[standout]gpg-key-name$FX[no-standout]> <$FX[standout]filename or string to encrypt$FX[no-standout]>"
     return 0
@@ -11,11 +13,11 @@
     echo "'${input}' is a directory."
     return -1
   elif [[ ! -f ${input} ]]; then
-    docker run --rm -e GPG_KEY_NAME=${gpgKey} -e RAW_TEXT=${input} ${ENCRYPTOR_IMAGE}
+    docker run --rm -e GPG_KEY_NAME=${gpgKey} -e RAW_TEXT=${input} ${encryptorImage}
 
     echo "$FG[yellow]Encypted input as text for $FG[blue]${gpgKey}."
   else
-    docker run --rm -v `pwd`/${input}:/work/input.txt -e GPG_KEY_NAME=${gpgKey} -e INPUT_FILE=/work/input.txt ${ENCRYPTOR_IMAGE}
+    docker run --rm -v `pwd`/${input}:/work/input.txt -e GPG_KEY_NAME=${gpgKey} -e INPUT_FILE=/work/input.txt ${encryptorImage}
 
     echo "$FG[yellow]Encypted $FX[bold]${input}$FX[no-bold] for $FG[blue]${gpgKey}."
   fi

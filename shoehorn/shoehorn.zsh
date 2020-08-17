@@ -28,7 +28,7 @@ function _is_in_docker_repo {
     if [[ ${non_docker_overrides[(r)${app}]} == ${app} ]] ; then
         return 1
     else
-        local imageTags=$(docker run --rm -v ~/.gcloud/:/gcloud/:ro  google/cloud-sdk:alpine bash -c "gcloud auth activate-service-account --key-file=/gcloud/GCR_SERVICE_ACCOUNT_KEY.json && gcloud container images list-tags eu.gcr.io/skyuk-uk-ukiss-registry-prod/${app}")
+        local imageTags=$(docker run --rm -v ~/.gcloud/:/gcloud/:ro  google/cloud-sdk:alpine bash -c "gcloud auth activate-service-account --key-file=/gcloud/GCR_SERVICE_ACCOUNT_KEY.json && gcloud container images list-tags ${DOCKER_REGISTRY}/${app}")
 
         if [[ -n ${imageTags} ]]; then
             return 0
