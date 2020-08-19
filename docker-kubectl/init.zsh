@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export DOCKER_KUBECTL_IMAGE="repo.sns.sky.com:8186/dost/docker-kubectl:1.16-latest"
+export DOCKER_KUBECTL_IMAGE="eu.gcr.io/skyuk-uk-ukiss-registry-prod/docker-kubectl:1.16-latest"
 
 if [ ! -d ~/.k ] ; then
   mkdir ~/.k
