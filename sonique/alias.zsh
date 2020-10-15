@@ -14,3 +14,5 @@ alias startoas='sudo /usr/local/McAfee/AntiMalware/VSControl startoas'
 alias resetVpn='sudo killall vpnagentd'
 alias amqbrowse='activemq browse --amqurl tcp://localhost:61616'
 
+alias kick='pbcopy < ~/Dropbox/sonique\ shared/Jira/kickoff.txt'
+alias demo='pbcopy < ~/Dropbox/sonique\ shared/Jira/demo.txt'
