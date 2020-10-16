@@ -1,6 +1,6 @@
 #function startVdcDatabase {
     local app_name='oracle-12c-vdc'
-    local app_version='2.151'
+    local app_version='2.162'
     local image="eu.gcr.io/skyuk-uk-ukiss-registry-prod/${app_name}:${app_version}"
 
     function runOracle {
