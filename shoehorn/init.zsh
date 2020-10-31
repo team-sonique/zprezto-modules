@@ -15,7 +15,7 @@ typeset -gA APPLICATIONS=( \
     battenberg    "Battenberg:gocd" \
     bran          "Bran:production-releases-local:charts/bran-chart:.tgz" \
     bullwinkle    "Bullwinkle:production-releases-local:charts/bullwinkle-chart:.tgz" \
-    doogal        "Doogal:production-releases-local:charts/doogal-chart:.tgz" \
+    doogal        "Doogal:gocd" \
     dudley        "Dudley:libs-releases-local:charts/dudley-chart:.tgz" \
     eclair        "Eclair:libs-releases-local:charts/eclair-chart:.tgz" \
     erebor        "Erebor:gocd" \
