@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+typeset -g SHOEHORN_VERSION=609
 
 # app             "Description : signed-off-repo : artifact path : artifact type"
 typeset -gA APPLICATIONS=(\
