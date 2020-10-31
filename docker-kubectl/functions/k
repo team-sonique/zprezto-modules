@@ -1,3 +1,4 @@
+docker pull ${DOCKER_KUBECTL_IMAGE}
 docker run --rm --net=host -it \
    -v ${HOME}/.k/.bash_history:/root/.bash_history:rw \
    -v ${HOME}/.k/.bash_aliases:/root/.bash_aliases:rw \
