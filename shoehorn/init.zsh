@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # app             "Description : signed-off-repo : artifact path : artifact type"
-typeset -gA APPLICATIONS = \
+typeset -gA APPLICATIONS=(\
     aview         "AView" \
     hector        "Hector" \
     kiki          "Kiki" \
@@ -25,7 +25,8 @@ typeset -gA APPLICATIONS = \
     redqueen      "Redqueen:production-releases-local:charts/redqueen-chart:.tgz" \
     rocky         "Rocky:production-releases-local:charts/rocky-chart:.tgz" \
     roobarb       "Roobarb:production-releases-local:charts/roobarb-chart:.tgz" \
-    smaug         "Smaug:production-releases-local:charts/smaug-chart:.tgz"
+    smaug         "Smaug:production-releases-local:charts/smaug-chart:.tgz" \
+)
 
 source "${0:h}/artifactory.zsh"
 #source "${0:h}/gocd.zsh"
