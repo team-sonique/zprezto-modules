@@ -1,8 +1,10 @@
 #!/usr/bin/env zsh
-typeset -g SHOEHORN_VERSION=609
+typeset -g _ARTIFACTORY="http://repo.sns.sky.com:8081/artifactory"
+typeset -g _SHOEHORN_VERSION=611
+typeset -g _gocd_cache_minutes=5
 
-# app             "Description : signed-off-repo : artifact path : artifact type"
-typeset -gA APPLICATIONS=(\
+    # app         "Description : signed-off-repo : artifact path : artifact type"
+typeset -gA APPLICATIONS=( \
     aview         "AView" \
     hector        "Hector" \
     kiki          "Kiki" \
@@ -10,13 +12,13 @@ typeset -gA APPLICATIONS=(\
     raiden        "Raiden" \
     shovel        "Shovel" \
     superman      "Superman" \
-    battenberg    "Battenberg:production-releases-local:charts/battenberg-chart:.tgz" \
+    battenberg    "Battenberg:gocd" \
     bran          "Bran:production-releases-local:charts/bran-chart:.tgz" \
     bullwinkle    "Bullwinkle:production-releases-local:charts/bullwinkle-chart:.tgz" \
     doogal        "Doogal:production-releases-local:charts/doogal-chart:.tgz" \
     dudley        "Dudley:libs-releases-local:charts/dudley-chart:.tgz" \
     eclair        "Eclair:libs-releases-local:charts/eclair-chart:.tgz" \
-    erebor        "Erebor:libs-releases-local:charts/erebor-chart:.tgz" \
+    erebor        "Erebor:gocd" \
     felix         "Felix:production-releases-local:charts/felix-chart:.tgz" \
     ffestiniog    "Ffestiniog::sonique/ffestiniog/ffestiniog-core:bin.zip" \
     garibaldi     "Garibaldi:production-releases-local:charts/garibaldi-chart:.tgz" \
@@ -26,13 +28,13 @@ typeset -gA APPLICATIONS=(\
     redqueen      "Redqueen:production-releases-local:charts/redqueen-chart:.tgz" \
     rocky         "Rocky:production-releases-local:charts/rocky-chart:.tgz" \
     roobarb       "Roobarb:production-releases-local:charts/roobarb-chart:.tgz" \
-    smaug         "Smaug:production-releases-local:charts/smaug-chart:.tgz" \
+    smaug         "Smaug:gocd" \
 )
 
 source "${0:h}/artifactory.zsh"
-#source "${0:h}/gocd.zsh"
+source "${0:h}/gocd.zsh"
 source "${0:h}/docker.zsh"
 source "${0:h}/completion_helpers.zsh"
 source "${0:h}/shoehorn.zsh"
 
-mkdir -p /tmp/shoehorn
+mkdir -p /tmp/shoehorn/gocd

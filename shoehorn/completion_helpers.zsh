@@ -45,6 +45,16 @@ function _complete_aggregates {
     _describe -t completion_aggregates 'shoehorn aggregates' completion_aggregates
 }
 
+function _get_latest_version {
+    local selected_app=${1}
+    IFS=":" read app_description source other <<< ${APPLICATIONS[$selected_app]}
+    if [[ ${source} == 'gocd' ]]; then
+        _get_latest_version_gocd $@
+    else
+        _get_latest_version_af $@
+    fi
+}
+
 function _complete_versions_with_latest {
     local selected_app="$1" app_description
     local -a versions

@@ -6,7 +6,7 @@
     local isDockerImage
     isDockerImage="$(_is_docker_image ${app})"
     if [ $? -eq 0 ]; then
-        docker logs ${app}
+        docker logs -f ${app}
         return 1;
     fi
 
@@ -15,5 +15,5 @@
         return 1
     fi
 
-    less "/logs/apps/${app}/${version}/${logfile}"
+    tail -f "/logs/apps/${app}/${version}/${logfile}"
 #}

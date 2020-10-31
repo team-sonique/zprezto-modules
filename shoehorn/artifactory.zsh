@@ -1,11 +1,9 @@
-typeset -g _ARTIFACTORY="http://repo.sns.sky.com:8081/artifactory"
-typeset -g _ARTIFACTORY_REPOSITORY="libs-releases-local"
 
 non_docker_overrides=(
     luthor
 )
 
-function _get_latest_version {
+function _get_latest_version_af {
    local app=$1
    local level=${2:-'dev'}
 
