@@ -12,7 +12,7 @@ function _run_shoehorn {
 
     if [ ! -f ${shoehorn_jar_path} ]; then
         _print_if_no_pipe "$FX[bold]$FG[yellow]Downloading Shoehorn...$FG[white]$FX[no-bold]"
-        curl -s "${_ARTIFACTORY}/${_ARTIFACTORY_REPOSITORY}/sonique/shoehorn/shoehorn/${_SHOEHORN_VERSION}/${shoehorn_filename}" -o ${shoehorn_jar_path}
+        curl -s "${_ARTIFACTORY}/libs-releases/sonique/shoehorn/shoehorn/${_SHOEHORN_VERSION}/${shoehorn_filename}" -o ${shoehorn_jar_path}
         _print_if_no_pipe "$FX[bold]$FG[yellow]Done$FG[white]$FX[no-bold]"
     fi
 
