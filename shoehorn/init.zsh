@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 typeset -g _ARTIFACTORY="http://repo.sns.sky.com:8081/artifactory"
-typeset -g _SHOEHORN_VERSION=612
+typeset -g _SHOEHORN_VERSION=613
 typeset -g _gocd_cache_minutes=5
 
     # app         "Description : signed-off-repo : artifact path : artifact type"
