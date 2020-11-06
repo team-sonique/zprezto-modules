@@ -1,0 +1,10 @@
+local wd="$(pwd)"
+
+if [[ -e "${wd}/Makefile" ]] ; then
+    make clean build
+elif [[ -e "${wd}/pom.xml" ]]; then
+   mvn clean install
+elif [[ -e "${wd}/gradlew" ]]; then
+  ${wd}/gradlew clean build
+fi
+

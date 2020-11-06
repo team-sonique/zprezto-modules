@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 typeset -g _ARTIFACTORY="http://repo.sns.sky.com:8081/artifactory"
-typeset -g _SHOEHORN_VERSION=613
+typeset -g _SHOEHORN_VERSION=614
 typeset -g _gocd_cache_minutes=5
 
     # app         "Description : signed-off-repo : artifact path : artifact type"
@@ -19,7 +19,7 @@ typeset -gA APPLICATIONS=( \
     dudley        "Dudley:libs-releases-local:charts/dudley-chart:.tgz" \
     eclair        "Eclair:libs-releases-local:charts/eclair-chart:.tgz" \
     erebor        "Erebor:gocd" \
-    felix         "Felix:production-releases-local:charts/felix-chart:.tgz" \
+    felix         "Felix:gocd" \
     ffestiniog    "Ffestiniog::sonique/ffestiniog/ffestiniog-core:bin.zip" \
     garibaldi     "Garibaldi:production-releases-local:charts/garibaldi-chart:.tgz" \
     gruffalo      "Gruffalo::sonique/gruffalo/gruffalo-build:bin.zip" \
