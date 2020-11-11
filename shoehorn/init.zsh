@@ -17,7 +17,7 @@ typeset -gA APPLICATIONS=( \
     bullwinkle    "Bullwinkle:production-releases-local:charts/bullwinkle-chart:.tgz" \
     doogal        "Doogal:gocd" \
     dudley        "Dudley:libs-releases-local:charts/dudley-chart:.tgz" \
-    eclair        "Eclair:libs-releases-local:charts/eclair-chart:.tgz" \
+    eclair        "Eclair:gocd" \
     erebor        "Erebor:gocd" \
     felix         "Felix:gocd" \
     ffestiniog    "Ffestiniog::sonique/ffestiniog/ffestiniog-core:bin.zip" \
