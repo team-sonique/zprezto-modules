@@ -1,0 +1,35 @@
+if (( # != 1 )); then
+   print >&2 "Usage: $0 <new version>"
+   exit 1
+fi
+
+newVer=${1}
+
+if ! [[ "${newVer}" =~ '^[0-9]\.[0-9]\.[0-9]{3}$' ]]; then
+  print >&2 "${newVer} does not look like a codac version."
+  exit 1
+fi
+
+for vf in `find ${HOME}/projects/src/git.bskyb.com/ukis-net-is/sonique -name codac.version`; do
+  local dir=${vf%/*}
+  echo "${dir}"
+
+  pushd ${dir}
+
+  git diff --quiet HEAD $REF -- $DIR
+  if [ $? -eq 0 ]; then
+    git pull --quiet
+    echo ${newVer} > ${vf}
+    git diff --quiet --exit-code codac.version
+    if [ $? -ne 0 ]; then
+      echo "Updating ${dir##*/} to ${newVer}"
+      git add codac.version
+      git commit -m"update codac version"
+      git -C ${dir} push
+    fi
+  else
+    echo "${dir##*/} has changes, NOT updating"
+  fi
+
+  popd
+done
