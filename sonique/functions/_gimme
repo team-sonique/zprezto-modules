@@ -1,0 +1,3 @@
+#compdef gimme
+
+_arguments :app:_complete_apps

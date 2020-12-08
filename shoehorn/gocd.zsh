@@ -26,7 +26,7 @@ function _get_latest_version_gocd {
             echo "${appVersion}-${propertiesVersion}"
         else
             local version=$($0_getVersion "completed" "deployment")
-            echo "${version%-*}"
+            echo "${${${version%%-*}#*.}:s/./-/}"
         fi
 
   } always {

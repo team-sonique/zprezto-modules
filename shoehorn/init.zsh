@@ -27,7 +27,7 @@ typeset -gA APPLICATIONS=( \
     marzipan      "Marzipan:libs-releases-local:charts/marzipan-chart:.tgz" \
     redqueen      "Redqueen:production-releases-local:charts/redqueen-chart:.tgz" \
     rocky         "Rocky:production-releases-local:charts/rocky-chart:.tgz" \
-    roobarb       "Roobarb:production-releases-local:charts/roobarb-chart:.tgz" \
+    roobarb       "Roobarb:gocd" \
     smaug         "Smaug:gocd" \
 )
 

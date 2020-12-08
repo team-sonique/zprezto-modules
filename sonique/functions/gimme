@@ -1,0 +1,23 @@
+{
+ local repoUrl='git.bskyb.com'
+ local group='ukis-net-is/sonique'
+ local app=${1}
+
+ function $0_doClone {
+    local repo=${1}
+    local targetDir="${HOME}/projects/src/${repoUrl}/${group}/${repo}"
+
+    if [[ ! -d "${targetDir}" ]] ; then
+      gclone ${repoUrl} ${group} ${repo}
+    else
+      echo "${repo} already checked out"
+    fi
+ }
+
+$0_doClone "${app}/${app}"
+$0_doClone "${app}/${app}-properties"
+$0_doClone "${app}/${app}-deployment"
+
+} always {
+    unfunction $0_doClone
+}
