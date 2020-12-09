@@ -6,15 +6,9 @@ typeset -g _gocd_cache_minutes=5
     # app         "Description : signed-off-repo : artifact path : artifact type"
 typeset -gA APPLICATIONS=( \
     aview         "AView" \
-    hector        "Hector" \
-    kiki          "Kiki" \
-    optimusprimer "Optimus Primer" \
-    raiden        "Raiden" \
-    shovel        "Shovel" \
-    superman      "Superman" \
     battenberg    "Battenberg:gocd" \
-    bran          "Bran:production-releases-local:charts/bran-chart:.tgz" \
     bullwinkle    "Bullwinkle:production-releases-local:charts/bullwinkle-chart:.tgz" \
+    bran          "Bran:gocd" \
     doogal        "Doogal:gocd" \
     dudley        "Dudley:libs-releases-local:charts/dudley-chart:.tgz" \
     eclair        "Eclair:gocd" \
@@ -23,12 +17,18 @@ typeset -gA APPLICATIONS=( \
     ffestiniog    "Ffestiniog::sonique/ffestiniog/ffestiniog-core:bin.zip" \
     garibaldi     "Garibaldi:production-releases-local:charts/garibaldi-chart:.tgz" \
     gruffalo      "Gruffalo::sonique/gruffalo/gruffalo-build:bin.zip" \
+    hector        "Hector" \
+    kiki          "Kiki" \
     luthor        "Luthor::sonique/luthor/luthor-core:bin.zip" \
     marzipan      "Marzipan:libs-releases-local:charts/marzipan-chart:.tgz" \
-    redqueen      "Redqueen:production-releases-local:charts/redqueen-chart:.tgz" \
+    optimusprimer "Optimus Primer" \
+    raiden        "Raiden" \
+    redqueen      "Redqueen:gocd" \
     rocky         "Rocky:production-releases-local:charts/rocky-chart:.tgz" \
     roobarb       "Roobarb:gocd" \
+    shovel        "Shovel" \
     smaug         "Smaug:gocd" \
+    superman      "Superman" \
 )
 
 source "${0:h}/artifactory.zsh"
