@@ -1,3 +1,23 @@
 #compdef gimme
+local ret=1
+local -a base=(ukis-net-is sonique)
 
-_arguments :app:_complete_apps
+_arguments '1:group:->group' '2:app:->app'
+
+case ${state} in
+    group)
+        local -a results
+
+        results=(${(s/|/)$(readGitlab "subgroups" ${base} )})
+
+        _describe -t results "Groups" results && ret=0
+        ;;
+
+    app)
+        local -a results
+
+        results=(${(s/|/)$(readGitlab "projects" ${base} ${line[1]})})
+
+        _describe -t results "Projects" results && ret=0
+        ;;
+esac

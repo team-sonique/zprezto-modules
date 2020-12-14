@@ -1,7 +1,6 @@
 {
  local repoUrl='git.bskyb.com'
  local group='ukis-net-is/sonique'
- local app=${1}
 
  function $0_doClone {
     local repo=${1}
@@ -14,9 +13,16 @@
     fi
  }
 
-$0_doClone "${app}/${app}"
-$0_doClone "${app}/${app}-properties"
-$0_doClone "${app}/${app}-deployment"
+ if [[ $# == 1 ]]; then
+    local app=${1}
+    for rep in "${(s/|/)$(readGitlab projects ukis-net-is sonique ${app})}"; do
+        $0_doClone "${app}/${rep%:*}"
+    done
+
+ elif [[ $# == 2 ]]; then
+
+    $0_doClone "$1/$2"
+ fi
 
 } always {
     unfunction $0_doClone

@@ -20,7 +20,7 @@ typeset -gA APPLICATIONS=( \
     hector        "Hector" \
     kiki          "Kiki" \
     luthor        "Luthor::sonique/luthor/luthor-core:bin.zip" \
-    marzipan      "Marzipan:libs-releases-local:charts/marzipan-chart:.tgz" \
+    marzipan      "Marzipan:gocd" \
     optimusprimer "Optimus Primer" \
     raiden        "Raiden" \
     redqueen      "Redqueen:gocd" \
