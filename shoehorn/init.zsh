@@ -7,7 +7,7 @@ typeset -g _gocd_cache_minutes=5
 typeset -gA APPLICATIONS=( \
     aview         "AView" \
     battenberg    "Battenberg:gocd" \
-    bullwinkle    "Bullwinkle:production-releases-local:charts/bullwinkle-chart:.tgz" \
+    bullwinkle    "Bullwinkle:gocd" \
     bran          "Bran:gocd" \
     doogal        "Doogal:gocd" \
     dudley        "Dudley:gocd" \
@@ -24,7 +24,7 @@ typeset -gA APPLICATIONS=( \
     optimusprimer "Optimus Primer" \
     raiden        "Raiden" \
     redqueen      "Redqueen:gocd" \
-    rocky         "Rocky:production-releases-local:charts/rocky-chart:.tgz" \
+    rocky         "Rocky:gocd" \
     roobarb       "Roobarb:gocd" \
     shovel        "Shovel" \
     smaug         "Smaug:gocd" \
