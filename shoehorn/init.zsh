@@ -10,7 +10,7 @@ typeset -gA APPLICATIONS=( \
     bullwinkle    "Bullwinkle:production-releases-local:charts/bullwinkle-chart:.tgz" \
     bran          "Bran:gocd" \
     doogal        "Doogal:gocd" \
-    dudley        "Dudley:libs-releases-local:charts/dudley-chart:.tgz" \
+    dudley        "Dudley:gocd" \
     eclair        "Eclair:gocd" \
     erebor        "Erebor:gocd" \
     felix         "Felix:gocd" \
