@@ -2,5 +2,5 @@
     local project=${@:1:1}
     local group=${(j:%2f:)@:2}
 
-    echo $(curl  --header "Authorization: Bearer FxDeJYN8CFMVNqoXkNs9" -s "https://git.bskyb.com/api/v4/groups/${group}/${project}" |  jq -r '[ .[] | .path + ":" + .name ] | join("|")')
+    echo $(curl  --header "Authorization: Bearer FxDeJYN8CFMVNqoXkNs9" -s "https://git.bskyb.com/api/v4/groups/${group}/${project}?per_page=50" |  jq -r '[ .[] | .path + ":" + .name ] | join("|")')
 #}
