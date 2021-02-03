@@ -15,7 +15,7 @@ typeset -gA APPLICATIONS=( \
     erebor        "Erebor:gocd" \
     felix         "Felix:gocd" \
     ffestiniog    "Ffestiniog::sonique/ffestiniog/ffestiniog-core:bin.zip" \
-    garibaldi     "Garibaldi:production-releases-local:charts/garibaldi-chart:.tgz" \
+    garibaldi     "Garibaldi:gocd" \
     gruffalo      "Gruffalo::sonique/gruffalo/gruffalo-build:bin.zip" \
     hector        "Hector" \
     kiki          "Kiki" \
