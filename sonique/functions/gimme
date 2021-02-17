@@ -10,6 +10,7 @@
       gclone ${repoUrl} ${group} ${repo}
     else
       echo "${repo} already checked out"
+      git -C ${targetDir} pull
     fi
  }
 
