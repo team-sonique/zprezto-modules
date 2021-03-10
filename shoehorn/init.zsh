@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
-typeset -g _ARTIFACTORY="http://repo.sns.sky.com:8081/artifactory"
-typeset -g _SHOEHORN_VERSION=614
+typeset -g _ARTIFACTORY="https://artifactory.bmtapps.bskyb.com/artifactory"
+typeset -g _SHOEHORN_VERSION=620
 typeset -g _gocd_cache_minutes=5
 
-    # app         "Description : signed-off-repo : artifact path : artifact type"
+    # app         "Description : signed-off-repo : artifact path "
 typeset -gA APPLICATIONS=( \
     aview         "AView" \
     battenberg    "Battenberg:gocd" \
@@ -14,12 +14,12 @@ typeset -gA APPLICATIONS=( \
     eclair        "Eclair:gocd" \
     erebor        "Erebor:gocd" \
     felix         "Felix:gocd" \
-    ffestiniog    "Ffestiniog::sonique/ffestiniog/ffestiniog-core:bin.zip" \
+    ffestiniog    "Ffestiniog::sonique/ffestiniog/ffestiniog-core" \
     garibaldi     "Garibaldi:gocd" \
-    gruffalo      "Gruffalo::sonique/gruffalo/gruffalo-build:bin.zip" \
+    gruffalo      "Gruffalo::sonique/gruffalo/gruffalo-build" \
     hector        "Hector" \
     kiki          "Kiki" \
-    luthor        "Luthor::sonique/luthor/luthor-core:bin.zip" \
+    luthor        "Luthor::sonique/luthor/luthor-core" \
     marzipan      "Marzipan:gocd" \
     optimusprimer "Optimus Primer" \
     raiden        "Raiden" \
@@ -37,4 +37,4 @@ source "${0:h}/docker.zsh"
 source "${0:h}/completion_helpers.zsh"
 source "${0:h}/shoehorn.zsh"
 
-mkdir -p /tmp/shoehorn/gocd
+mkdir -p /tmp/shoehorn/{gocd,af}

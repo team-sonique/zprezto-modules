@@ -16,7 +16,7 @@ function _run_shoehorn {
         _print_if_no_pipe "$FX[bold]$FG[yellow]Done$FG[white]$FX[no-bold]"
     fi
 
-    java -cp ${shoehorn_jar_path} $@
+    java -cp ${shoehorn_jar_path} -Djavax.net.ssl.trustStoreType=KeychainStore -Djavax.net.ssl.trustStore=/dev/null $@
 }
 
 function _is_in_docker_repo {
