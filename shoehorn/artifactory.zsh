@@ -14,6 +14,9 @@ function _get_latest_version_af {
    local repo appDescription releaseRepo appPath appType
    IFS=":" read appDescription releaseRepo appPath appType <<< ${APPLICATIONS[${app}]}
 
+   appPath=${appPath:-"sonique/${app}/${app}-deploy"}
+   appType=${appType:-"bin.zip"}
+
    {
       function $0_version {
          local path=$(jq -r  "[ .results[] | select(.repo == \"${1}\") | select(.path | contains(\"${2}\")) ][0].path" "${shoeTmpFile}" 2> /dev/null)
@@ -30,8 +33,8 @@ function _get_latest_version_af {
                   \"\$or\": [
                     {
                       \"\$and\" : [
-                        { \"path\": { \"\$match\": \"${appPath:-"sonique/${app}/${app}-deploy"}/*\" } },
-                        { \"name\": { \"\$match\": \"*${appType:-"bin.zip"}\" } }
+                        { \"path\": { \"\$match\": \"${appPath}/*\" } },
+                        { \"name\": { \"\$match\": \"*${appType}\" } }
                       ]
                     },
                     {
