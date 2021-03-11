@@ -3,6 +3,8 @@ non_docker_overrides=(
     luthor
 )
 
+function echoErr() { echo "$@" 1>&2; }
+
 function _get_latest_version_af {
    local app=$1 level=${2:-'dev'} shoeTmpFile="/tmp/shoehorn/af/${1}.json"
 
@@ -55,7 +57,7 @@ function _get_latest_version_af {
          repo=${releaseRepo:-$prodRepo}
       fi
 
-      local appVersion=$($0_version ${repo} "deploy")
+      local appVersion=$($0_version ${repo} "${appPath}")
       local propertiesVersion=$($0_version ${repo} "properties")
 
       echo "${appVersion}-${propertiesVersion}"
