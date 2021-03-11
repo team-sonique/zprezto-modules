@@ -1,0 +1,24 @@
+
+for vf in `find ${HOME}/projects/src/git.bskyb.com/ukis-net-is/sonique/${1} -name .gitmodules -maxdepth 3`; do
+  local dir=${vf%/*}
+  echo "$FX[bold]$FG[yellow]${dir}$FG[white]$FX[no-bold]"
+
+  pushd ${dir}
+
+  git diff --quiet --ignore-submodules HEAD $REF -- $DIR
+  if [ $? -eq 0 ]; then
+    git pull --quiet
+    git submodule update --remote
+    git diff --quiet --exit-code --submodule
+    if [ $? -ne 0 ]; then
+      echo "$FX[bold]$FG[green]Updating Submodules$FG[white]$FX[no-bold]"
+      git add .
+      git commit -m"TECH [auto] update submodules"
+      git -C ${dir} push
+    fi
+  else
+    echo "$FX[bold]$FG[red]${dir##*/} has changes, NOT updating.$FG[white]$FX[no-bold]"
+  fi
+
+  popd
+done

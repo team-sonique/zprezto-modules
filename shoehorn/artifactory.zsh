@@ -7,7 +7,6 @@ function _get_latest_version_af {
    local app=$1 level=${2:-'dev'} shoeTmpFile="/tmp/shoehorn/af/${1}.json"
 
    local devRepo="libs-releases-local"
-   local testRepo="test-releases-local"
    local prodRepo="production-releases-local"
 
    local repo appDescription releaseRepo appPath appType
@@ -19,9 +18,7 @@ function _get_latest_version_af {
          echo "${path##*/}"
       }
 
-      if [[ ( ! -e ${shoeTmpFile} ) || -z $(find ${shoeTmpFile} -mmin -${_gocd_cache_minutes}) ]]; then
-        aql=
-
+      if [[ ( ! -e ${shoeTmpFile} ) || -z $(find ${shoeTmpFile} -mmin -${_af_cache_minutes}) ]]; then
         curl -X POST \
             --insecure -s \
             -u "team.sonique:password" \
@@ -55,7 +52,7 @@ function _get_latest_version_af {
       if [[ ${level} == 'dev' ]]; then
          repo=${devRepo}
       else
-         repo=${releaseRepo:-$testRepo}
+         repo=${releaseRepo:-$prodRepo}
       fi
 
       local appVersion=$($0_version ${repo} "deploy")

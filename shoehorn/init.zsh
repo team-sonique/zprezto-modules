@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 typeset -g _ARTIFACTORY="https://artifactory.bmtapps.bskyb.com/artifactory"
 typeset -g _SHOEHORN_VERSION=620
-typeset -g _gocd_cache_minutes=5
+typeset -g _gocd_cache_minutes=1
+typeset -g _af_cache_minutes=1
 
     # app         "Description : signed-off-repo : artifact path "
 typeset -gA APPLICATIONS=( \
