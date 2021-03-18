@@ -16,6 +16,7 @@ typeset -gA APPLICATIONS=( \
     erebor        "Erebor:gocd" \
     felix         "Felix:gocd" \
     ffestiniog    "Ffestiniog::sonique/ffestiniog/ffestiniog-core" \
+    franz         "Franz:gocd" \
     garibaldi     "Garibaldi:gocd" \
     gruffalo      "Gruffalo::sonique/gruffalo/gruffalo-build" \
     hector        "Hector" \
