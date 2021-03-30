@@ -1,3 +1,11 @@
 local ver=${1}
+local distUrl=${_ARTIFACTORY}/gradle-distributions/gradle-${ver}-bin.zip
 
-./gradlew wrapper --gradle-version=${ver} --gradle-distribution-url=${_ARTIFACTORY}/gradle-distributions/gradle-${ver}-bin.zip
+if [[ ! -x "./gradlew" ]]; then
+   echo "No gradlew found"
+   return 1
+fi
+
+sed -i -e "s|^distributionUrl\=.*$|distributionUrl=${distUrl}|g" ./gradle/wrapper/gradle-wrapper.properties
+
+./gradlew wrapper --gradle-version=${ver} --gradle-distribution-url="${distUrl}"
