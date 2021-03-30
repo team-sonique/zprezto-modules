@@ -1,0 +1,3 @@
+local ver=${1}
+
+./gradlew wrapper --gradle-version=${ver} --gradle-distribution-url=${_ARTIFACTORY}/gradle-distributions/gradle-${ver}-bin.zip
