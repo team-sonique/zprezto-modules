@@ -3,7 +3,6 @@
     local bullwinkle_version=${2#dev-}
     local image_name
 
-
     if [ -z ${bullwinkle_version} ]; then
         bullwinkle_version=`_get_latest_version bullwinkle dev`
     fi
@@ -15,5 +14,6 @@
     fi
 
     echo "Running Bullwinkle ${job_name} version $bullwinkle_version"
-    (set -x; docker run --rm --name bullwinkle-${job_name} --net=sonique-network --net-alias=bullwinkle-${job_name} -v /data/gsma:/app/gsma -v /data/apps/bullwinkle/dev-${bullwinkle_version}/config:/app/config -e TZ=Europe/London ${image_name} )
+    mkdir -p /data/ceir/{incoming,outgoing,tmp}
+    (set -x; docker run --rm --name bullwinkle-${job_name} --net=sonique-network --net-alias=bullwinkle-${job_name} -v /data/ceir:/app/ceir -v /data/apps/bullwinkle/dev-${bullwinkle_version}/config:/app/config -e TZ=Europe/London ${image_name} )
 #}
