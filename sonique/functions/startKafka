@@ -1,11 +1,12 @@
-if [[ ! -d  ${HOME}/projects/src/git.bskyb.com/ukis-net-is/sonique/franz/franz ]]; then
-  gimme franz franz
-fi
+gimme franz franz
 
-pushd ${HOME}/projects/src/git.bskyb.com/ukis-net-is/sonique/franz/franz/app/src/test/resources/docker
+pushd franz
+pushd app/src/test/resources/docker
 
+docker compose pull
 docker compose up
 
 docker rm -vf broker zookeeper schema-registry connect config-broker-post-startup install-connectors-script
 
+popd
 popd

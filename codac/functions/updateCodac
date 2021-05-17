@@ -1,18 +1,18 @@
 if (( # != 1 )); then
    print >&2 "Usage: $0 <new version>"
-   exit 1
+   return 1
 fi
 
 newVer=${1}
 
-if ! [[ "${newVer}" =~ '^[0-9]\.[0-9]\.[0-9]{3}$' ]]; then
+if ! [[ "${newVer}" =~ '^[0-9]\.[0-9]\.[0-9]{1,3}$' ]]; then
   print >&2 "${newVer} does not look like a codac version."
-  exit 1
+  return 1
 fi
 
 for vf in `find ${HOME}/projects/src/git.bskyb.com/ukis-net-is/sonique -name codac.version`; do
   local dir=${vf%/*}
-  echo "${dir}"
+  echo "$FG[yellow]${dir}$FG[none]"
 
   pushd ${dir}
 
@@ -22,13 +22,13 @@ for vf in `find ${HOME}/projects/src/git.bskyb.com/ukis-net-is/sonique -name cod
     echo ${newVer} > ${vf}
     git diff --quiet --exit-code codac.version
     if [ $? -ne 0 ]; then
-      echo "Updating ${dir##*/} to ${newVer}"
+      echo "$FG[green]Updating ${dir##*/} to ${newVer}$FG[none]"
       git add codac.version
       git commit -m"update codac version"
       git -C ${dir} push
     fi
   else
-    echo "${dir##*/} has changes, NOT updating"
+    echo "$FG[red]${dir##*/} has changes, NOT updating$FG[none]"
   fi
 
   popd
