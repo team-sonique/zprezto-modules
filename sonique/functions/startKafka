@@ -3,6 +3,12 @@ gimme franz franz
 pushd franz
 pushd app/src/test/resources/docker
 
+if [[ $1 = "cvf" ]]; then
+    export KAFKA_ENV=cvf
+else
+    export KAFKA_ENV=dev
+fi
+
 docker compose pull
 docker compose up
 
