@@ -6,6 +6,6 @@ if [[ ! -x "./gradlew" ]]; then
    return 1
 fi
 
-sed -i -e "s|^distributionUrl\=.*$|distributionUrl=${distUrl}|g" ./gradle/wrapper/gradle-wrapper.properties
+sed -i '' -e "s|^distributionUrl\=.*$|distributionUrl=${distUrl}|g" ./gradle/wrapper/gradle-wrapper.properties
 
 ./gradlew wrapper --gradle-version=${ver} --gradle-distribution-url="${distUrl}"
